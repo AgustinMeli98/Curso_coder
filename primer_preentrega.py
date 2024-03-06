@@ -13,7 +13,7 @@ conn = psycopg2.connect(
 )
 
 # Defino la URL de la API
-url = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m"
+url = "https://api.covidtracking.com/v1/states/current.json"
 
 # Realizo la solicitud a la API
 response = requests.get(url)
@@ -27,10 +27,10 @@ if response.status_code == 200:
 
     # Creo la tabla en Redshift
     with conn.cursor() as cur:
-        cur.execute("DROP TABLE IF EXISTS clima_data")  # Elimino la tabla si ya existe
-        cur.execute("CREATE TABLE clima_data ({})".format(', '.join([f"{column} VARCHAR" for column in columns])))
+        cur.execute("DROP TABLE IF EXISTS covid_data")  # Elimino la tabla si ya existe
+        cur.execute("CREATE TABLE covid_data ({})".format(', '.join([f"{column} VARCHAR" for column in columns])))
         # Agrego columna para la fecha de ingesta
-        cur.execute("ALTER TABLE clima_data ADD COLUMN fecha_ingesta DATE DEFAULT CURRENT_DATE")
+        cur.execute("ALTER TABLE covid_data ADD COLUMN fecha_ingesta DATE DEFAULT CURRENT_DATE")
     conn.commit()
 
     print("Tabla creada correctamente.")
