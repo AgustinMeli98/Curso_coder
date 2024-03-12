@@ -1,39 +1,80 @@
-#importar API y crear tabla con columnas correspondientes en Redshift, con columna temporal de control
-
+import os
+from dotenv import load_dotenv
 import requests
 import psycopg2
 
+# Cargo variables de entorno desde el archivo .env
+load_dotenv()
+
+# Obtengo las credenciales de la base de datos desde las variables de entorno
+db_host = os.getenv("DB_HOST")
+db_port = os.getenv("DB_PORT")
+db_name = os.getenv("DB_NAME")
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
+
 # Conecto a la base de datos de Redshift
 conn = psycopg2.connect(
-    host='data-engineer-cluster.cyhh5bfevlmn.us-east-1.redshift.amazonaws.com',
-    port='5439',
-    dbname='data-engineer-database',
-    user='agusmeli98_coderhouse',
-    password='S8osw1x5Bl'
+    host=db_host,
+    port=db_port,
+    dbname=db_name,
+    user=db_user,
+    password=db_password
 )
 
+# Creo la tabla de estaciones si no existe
+with conn.cursor() as cur:
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS estaciones (
+            codigo INTEGER PRIMARY KEY,
+            descripcion TEXT,
+            latitud FLOAT,
+            longitud FLOAT,
+            direccion TEXT,
+            codigo_postal INTEGER,
+            poblacion TEXT,
+            provincia TEXT,
+            fichas TEXT,
+            tuneles_lavado TEXT,
+            fecha_ingreso TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.commit()
+    print("Tabla de estaciones creada correctamente.")
+
 # Defino la URL de la API
-url = "https://api.covidtracking.com/v1/states/current.json"
+url = "https://data.renfe.com/api/3/action/datastore_search?resource_id=a2368cff-1562-4dde-8466-9635ea3a572a"
 
 # Realizo la solicitud a la API
 response = requests.get(url)
 
 if response.status_code == 200:
-    data = response.json()
+    data = response.json()['result']['records']
 
-    # Obtengo las claves (columnas) de un registro de datos para crear la tabla
-    sample_record = data[0]  # Tomo el primer registro como muestra
-    columns = list(sample_record.keys())
-
-    # Creo la tabla en Redshift
+    # Inserto los datos en la tabla de estaciones
     with conn.cursor() as cur:
-        cur.execute("DROP TABLE IF EXISTS covid_data")  # Elimino la tabla si ya existe
-        cur.execute("CREATE TABLE covid_data ({})".format(', '.join([f"{column} VARCHAR" for column in columns])))
-        # Agrego columna para la fecha de ingesta
-        cur.execute("ALTER TABLE covid_data ADD COLUMN fecha_ingesta DATE DEFAULT CURRENT_DATE")
-    conn.commit()
+        for record in data:
+            cur.execute("""
+                INSERT INTO estaciones (
+                    codigo, descripcion, latitud, longitud,
+                    direccion, codigo_postal, poblacion, provincia,
+                    fichas, tuneles_lavado
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                record['CÓDIGO'],
+                record['DESCRIPCION'],
+                record['LATITUD'],
+                record['LONGITUD'],
+                record['DIRECCIÓN'],
+                record['C.P.'],
+                record['POBLACION'],
+                record['PROVINCIA'],
+                record['Fichas'],
+                record['Túneles lavado']
+            ))
 
-    print("Tabla creada correctamente.")
+    conn.commit()
+    print("Datos insertados correctamente en la tabla de estaciones.")
 else:
     print("Error al hacer la solicitud:", response.status_code)
 
