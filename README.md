@@ -1,4 +1,4 @@
-# Proyecto de cusro de data engineering
+# Proyecto de curso de data engineering
 
 ## Objetivo primer entregable
 
