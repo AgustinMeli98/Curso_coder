@@ -3,7 +3,7 @@
 ## Objetivo primer entregable
 
 El primer entregable del proyecto consta de formular una consulta sobre una API, y crear una tabla en redshift para albergar y consumir los datos consultados. 
-En nuestro caso trabajamos con datos de transporte público en Alemania. URL: https://v6.db.transport.rest
+En nuestro caso trabajamos con datos de transporte público (trenes) en España. URL: 	https://data.renfe.com/api/3/action/datastore_search
 
 ## Pasos para utilización:
 
