@@ -23,10 +23,10 @@ conn = psycopg2.connect(
     password=db_password
 )
 
-# Creo la tabla de estaciones_Malaga si no existe
+# Creo la tabla de estaciones_Málaga si no existe
 with conn.cursor() as cur:
     cur.execute("""
-        CREATE TABLE IF NOT EXISTS estaciones_Malaga (
+        CREATE TABLE IF NOT EXISTS estaciones_Málaga (
             codigo INTEGER PRIMARY KEY,
             descripcion TEXT,
             latitud FLOAT,
@@ -38,7 +38,7 @@ with conn.cursor() as cur:
         )
     """)
     conn.commit()
-    print("Tabla de estaciones_Malaga creada correctamente.")
+    print("Tabla de estaciones_Málaga creada correctamente.")
 
 # Defino la URL de la API
 url = "https://data.renfe.com/api/3/action/datastore_search?resource_id=a2368cff-1562-4dde-8466-9635ea3a572a"
@@ -55,11 +55,11 @@ if response.status_code == 200:
     # Descartar las columnas "Túneles lavado", "Fichas" y "Provincia", por traer datos nulos o inservibles
     df = df.drop(columns=["Túneles lavado", "Fichas", "PROVINCIA"])
 
-    # Inserto los datos en la tabla de estaciones_Malaga
+    # Inserto los datos en la tabla de estaciones_Málaga
     with conn.cursor() as cur:
         for _, row in df.iterrows():
             cur.execute("""
-                INSERT INTO estaciones_Malaga (
+                INSERT INTO estaciones_Málaga (
                     codigo, descripcion, latitud, longitud,
                     direccion, codigo_postal, poblacion
                 ) VALUES (%s, %s, %s, %s, %s, %s, %s)
@@ -74,7 +74,7 @@ if response.status_code == 200:
             ))
 
     conn.commit()
-    print("Datos insertados correctamente en la tabla de estaciones_Malaga.")
+    print("Datos insertados correctamente en la tabla de estaciones_Málaga.")
 else:
     print("Error al hacer la solicitud:", response.status_code)
 
