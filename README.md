@@ -5,6 +5,9 @@
 El primer entregable del proyecto consta de formular una consulta sobre una API, y crear una tabla en redshift para albergar y consumir los datos consultados. 
 En nuestro caso trabajamos con datos de transporte público (trenes) en España. URL: 	https://data.renfe.com/api/3/action/datastore_search
 
+## Objetivo segundo entregable
+Solucionar una situación real de ETL donde puedan llegar a aparecer duplicados, nulos y valores atípicos durante la ingesta- Transformación- Carga de la data
+
 ## Pasos para utilización:
 
 **1_ Copiar repositorio.**
