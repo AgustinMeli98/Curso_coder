@@ -20,3 +20,6 @@ Solucionar una situación real de ETL donde puedan llegar a aparecer duplicados,
 * psycopg2: Es necesario para conectarse y operar con la base de datos PostgreSQL. Este módulo proporciona una implementación de la API de bases de datos de PostgreSQL para Python.
 * requests: Se utiliza para realizar solicitudes HTTP a la API externa y obtener los datos necesarios.
 * python-dotenv: Esta biblioteca facilita la carga de variables de entorno desde archivos .env en tu sistema.
+
+## CAMBIO DE API  
+En función de obtener datos reelevantes y actualizables diariamente, decidí cambiar la API utilizada en el tercer entregable por la de yahoo finance de bitcoin, en la cual obtengo datos sobre los valores diarios del bitcoin.
