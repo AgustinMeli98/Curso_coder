@@ -23,3 +23,9 @@ Solucionar una situación real de ETL donde puedan llegar a aparecer duplicados,
 
 ## CAMBIO DE API  
 En función de obtener datos reelevantes y actualizables diariamente, decidí cambiar la API utilizada en el tercer entregable por la de yahoo finance de bitcoin, en la cual obtengo datos sobre los valores diarios del bitcoin.
+
+### Construcción de imagen de docker
+`docker build -t bitcoin_dag .`
+
+### Crear y ejecutar contenedor
+`docker run -d -p 8080:8080 --name bitcoin_container bitcoin_dag`
