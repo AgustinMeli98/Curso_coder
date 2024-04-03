@@ -24,6 +24,12 @@ Solucionar una situación real de ETL donde puedan llegar a aparecer duplicados,
 ## CAMBIO DE API  
 En función de obtener datos reelevantes y actualizables diariamente, decidí cambiar la API utilizada en el tercer entregable por la de yahoo finance de bitcoin, en la cual obtengo datos sobre los valores diarios del bitcoin.
 
+## Objetivo tercer entregable
+* Crear un script liviano y funcional que pueda ser utilizado en cualquier Sistema operativo y por cualquier usuario. 
+
+* Dockerizar un script para hacerlo funcional en cualquier sistema operativo. 
+
+
 ### Construcción de imagen de docker
 `docker build -t bitcoin_dag .`
 
