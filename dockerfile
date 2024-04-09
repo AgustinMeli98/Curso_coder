@@ -3,7 +3,10 @@ FROM python:3.8-slim
 
 # Instalo Airflow y otras dependencias
 RUN pip install apache-airflow[yaml,postgres]
-RUN pip install yfinance 
+
+# Copio el archivo de requisitos y lo instalo
+COPY requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
 
 # Establezco las variables de entorno para Airflow
 ENV AIRFLOW_HOME=/airflow
@@ -17,3 +20,4 @@ COPY dag.py /airflow/dags/
 
 # Inicio Airflow al iniciar el contenedor
 CMD ["airflow", "webserver", "--port", "8080"]
+
