@@ -1,23 +1,17 @@
 # Utilizo una imagen de Python como base
 FROM python:3.8-slim
 
-# Instalo Airflow y otras dependencias
-RUN pip install apache-airflow[yaml,postgres]
-
 # Copio el archivo de requisitos y lo instalo
 COPY requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
-# Establezco las variables de entorno para Airflow
-ENV AIRFLOW_HOME=/airflow
-ENV PYTHONPATH="${PYTHONPATH}:${AIRFLOW_HOME}"
+# Copio el script al contenedor
+COPY dag.py /app/dag.py
 
-# Creo el directorio para los DAGs
-RUN mkdir -p /airflow/dags
+# Establezco el directorio de trabajo
+WORKDIR /app
 
-# Copio el script de DAG al directorio de DAGs en el contenedor
-COPY dag.py /airflow/dags/
+# Ejecuto el script
+CMD ["python", "dag.py"]
 
-# Inicio Airflow al iniciar el contenedor
-CMD ["airflow", "webserver", "--port", "8080"]
 
