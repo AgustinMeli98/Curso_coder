@@ -1,6 +1,4 @@
 from datetime import datetime, timedelta
-from airflow import DAG
-from airflow.operators.python import PythonOperator
 import os
 from dotenv import load_dotenv
 import psycopg2
@@ -69,28 +67,5 @@ def load_bitcoin():
     conn.close()
 
 
-# Defino los argumentos del DAG
-default_args = {
-    'owner': 'usuario',
-    'depends_on_past': False,
-    'start_date': datetime(2024, 4, 3),
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
-}
-
-# Defino el DAG
-dag = DAG(
-    'cripto_dag',
-    description='DAG para cargar datos diarios de valores de bitcoin',
-    default_args=default_args,
-    schedule_interval=timedelta(days=1),  # Ejecutar diariamente
-)
-
-# Defino el operador que ejecutará el script
-run_this_task = PythonOperator(
-    task_id='Load_bitcoin_daily_prices',
-    python_callable=load_bitcoin,
-    dag=dag,
-)
+# Llamo a la función para cargar los datos de Bitcoin
+load_bitcoin()
