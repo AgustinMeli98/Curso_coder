@@ -37,4 +37,5 @@ Se cambió la API utilizada para obtener valores más confiables y de actualizac
 docker build -t currency_handler .
 
 ### Crear y ejecutar contenedor:
-docker run -d -p 8080:8080 --name currency_container currency_dag
+docker run --name currency_handler -d currency_handler
+
