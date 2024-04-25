@@ -36,8 +36,7 @@ def load_dollar_data():
                 casa VARCHAR,
                 nombre VARCHAR,
                 compra FLOAT,
-                venta FLOAT,
-                fecha_actualizacion TIMESTAMP
+                venta FLOAT
             )
         """)
         conn.commit()
@@ -51,11 +50,11 @@ def load_dollar_data():
     with conn.cursor() as cur:
         for entry in data:
             cur.execute("""
-                INSERT INTO valoracion_monedas ("fecha", "moneda", "casa", "nombre", "compra", "venta", "fecha_actualizacion")
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO valoracion_monedas ("fecha", "moneda", "casa", "nombre", "compra", "venta")
+                VALUES (%s, %s, %s, %s, %s, %s)
             """, (
                 datetime.now(), entry["moneda"], entry["casa"], entry["nombre"],
-                entry["compra"], entry["venta"], entry["fechaActualizacion"]
+                entry["compra"], entry["venta"]
             ))
         conn.commit()
         print("Datos de dolar insertados correctamente en la tabla de valoracion_monedas.")
@@ -70,11 +69,11 @@ def load_dollar_data():
         # Inserto los datos del Euro en la tabla de valoracion_monedas
         with conn.cursor() as cur:
             cur.execute("""
-                INSERT INTO valoracion_monedas ("fecha", "moneda", "casa", "nombre", "compra", "venta", "fecha_actualizacion")
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO valoracion_monedas ("fecha", "moneda", "casa", "nombre", "compra", "venta")
+                VALUES (%s, %s, %s, %s, %s, %s)
             """, (
                 datetime.now(), data["moneda"], data["casa"], data["nombre"],
-                data["compra"], data["venta"], data["fechaActualizacion"]
+                data["compra"], data["venta"]
             ))
             conn.commit()
             print("Datos del Euro insertados correctamente en la tabla de valoracion_monedas.")
@@ -92,11 +91,11 @@ def load_dollar_data():
         # Inserto los datos del Peso Chileno en la tabla de valoracion_monedas
         with conn.cursor() as cur:
             cur.execute("""
-                INSERT INTO valoracion_monedas ("fecha", "moneda", "casa", "nombre", "compra", "venta", "fecha_actualizacion")
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO valoracion_monedas ("fecha", "moneda", "casa", "nombre", "compra", "venta")
+                VALUES (%s, %s, %s, %s, %s, %s)
             """, (
                 datetime.now(), data["moneda"], data["casa"], data["nombre"],
-                data["compra"], data["venta"], data["fechaActualizacion"]
+                data["compra"], data["venta"]
             ))
             conn.commit()
             print("Datos del Peso Chileno insertados correctamente en la tabla de valoracion_monedas.")
