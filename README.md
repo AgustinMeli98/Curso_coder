@@ -30,11 +30,11 @@ En función de obtener datos reelevantes y actualizables diariamente, decidí ca
 * Dockerizar un script para hacerlo funcional en cualquier sistema operativo. 
 
 
-### Construcción de imagen de docker
-`docker build -t bitcoin_dag .`
-
-### Crear y ejecutar contenedor
-`docker run -d -p 8080:8080 --name bitcoin_container bitcoin_dag`
-
 ## Proyecto final
 Se cambió la API utilizada para obtener valores más confiables y de actualización más continua.
+
+### Construcción de imagen de docker
+docker build -t currency_handler .
+
+### Crear y ejecutar contenedor:
+docker run -d -p 8080:8080 --name currency_container currency_dag
