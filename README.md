@@ -35,3 +35,6 @@ En función de obtener datos reelevantes y actualizables diariamente, decidí ca
 
 ### Crear y ejecutar contenedor
 `docker run -d -p 8080:8080 --name bitcoin_container bitcoin_dag`
+
+## Proyecto final
+Se cambió la API utilizada para obtener valores más confiables y de actualizaciín más continua.
