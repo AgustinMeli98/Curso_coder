@@ -34,8 +34,8 @@ En función de obtener datos reelevantes y actualizables diariamente, decidí ca
 Se cambió la API utilizada para obtener valores más confiables y de actualización más continua.
 
 ### Construcción de imagen de docker
-docker build -t currency_handler .
+docker build -t carga_datos_moneda .
 
 ### Crear y ejecutar contenedor:
-docker run --name currency_handler -d currency_handler
+docker run --name mi_contenedor -d carga_datos_moneda
 
