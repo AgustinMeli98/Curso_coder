@@ -1,13 +1,15 @@
+apache-airflow
 certifi==2024.2.2
 charset-normalizer==3.3.2
 idna==3.7
 numpy
 pandas
-psycopg2-binary==2.9.9
+psycopg2-binary==2.9.9.
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2024.1
 requests==2.31.0
 six==1.16.0
+sqlalchemy
 tzdata==2024.1
 urllib3==2.2.1
