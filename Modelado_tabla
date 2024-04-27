@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS valoracion_monedas (
                 compra FLOAT,
                 venta FLOAT,
                 fecha_actualizacion TIMESTAMP)
+
 EJEMPLO
 FECHA			                MONEDA    CASA			        NOMBRE			              COMPRA 	    VENTA		    FECHA_ACTUALIZACIÓN
 2024-04-26 21:38:24.710	  USD	      oficial			      Oficial				            854.0		    894.0		    2024-04-26 21:00:00.000
