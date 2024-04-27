@@ -8,13 +8,6 @@ CREATE TABLE IF NOT EXISTS valoracion_monedas (
                 fecha_actualizacion TIMESTAMP)
 
 EJEMPLO
-FECHA			                MONEDA    CASA			        NOMBRE			              COMPRA 	    VENTA		    FECHA_ACTUALIZACIÓN
-2024-04-26 21:38:24.710	  USD	      oficial			      Oficial				            854.0		    894.0		    2024-04-26 21:00:00.000
-2024-04-26 21:38:25.090	  USD	      blue			        Blue				              1035.0		  1055.0	  	2024-04-26 21:00:00.000
-2024-04-26 21:38:25.285	  USD	      bolsa		    	    Bolsa				              1033.6		  1036.6	  	2024-04-26 21:00:00.000
-2024-04-26 21:38:25.483	  USD	      contadoconliqui	  Contado con liquidación	  1075.8		  1078.8		  2024-04-26 21:00:00.000
-2024-04-26 21:38:25.686	  USD	      mayorista		      Mayorista			            872.0		    875.0		    2024-04-26 21:00:00.000
-2024-04-26 21:38:25.879	  USD	      cripto			      Cripto		            		1060.0		  1080.0		  2024-04-26 21:00:00.000
-2024-04-26 21:38:26.078	  USD	      tarjeta			      Tarjeta			            	1366.4		  1430.4		  2024-04-26 21:00:00.000
-2024-04-26 21:38:27.023	  EUR	      oficial			      Euro			              	934.93		  935.81		  2024-04-26 21:00:00.000
-2024-04-26 21:38:28.120	  CLP	      oficial			      Peso Chileno		        	92.07		    92.22		    2024-04-26 21:00:00.000
+
+FECHA			                MONEDA          CASA			        NOMBRE			              COMPRA 	        VENTA		    FECHA_ACTUALIZACIÓN
+
