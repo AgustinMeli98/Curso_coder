@@ -124,7 +124,7 @@ password = os.getenv('CONTRASENA_EMISOR')
 
 def enviar_correo(mensaje):
     # Configurar el servidor SMTP
-    servidor_smtp = 'smtp.especifico.com' #definir servidor de smtp
+    servidor_smtp = 'smtp-mail.outlook.com' #definir servidor de smtp
     puerto_smtp = 587
 
     # Configurar el mensaje de correo
