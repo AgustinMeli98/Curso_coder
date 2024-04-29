@@ -37,5 +37,5 @@ Se cambió la API utilizada para obtener valores más confiables y de actualizac
 docker build -t carga_datos_moneda .
 
 ### Crear y ejecutar contenedor:
-docker run --name mi_contenedor carga_datos_moneda
+docker run --name contenedor_moneda carga_datos_moneda
 
