@@ -39,5 +39,5 @@ docker build -t carga_datos_moneda .
 ### Crear y ejecutar contenedor:
 docker run --name contenedor_moneda carga_datos_moneda
 
-#### Entrega final
+## Entrega final
 Copilamos toda la carga de datos de las distintas monedas en un script. Manejamos la carga de los datos por separado de la alerta, lo que permite mantener los scripts más modulares y específicos en sus funcionalidades. Además la lógica de verificación y envío de la alerta se manejará dentro del DAG en Airflow.
